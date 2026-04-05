@@ -1,14 +1,10 @@
 import React, { useRef, useState } from "react";
 import "../assets/styles/Contact.scss";
-import emailjs from "@emailjs/browser";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
-
-const apiKey = process.env.REACT_APP_EMAIL_API_KEY;
-const serviceId = process.env.REACT_APP_EMAIL_SERVICE_ID;
-const templateId = process.env.REACT_APP_EMAIL_TEMPLATE_ID;
+import Snackbar from "@mui/material/Snackbar";
 
 function Contact() {
   const [name, setName] = useState<string>("");
@@ -19,6 +15,8 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
+  const [isSent, setIsSent] = useState<boolean>(false);
+
   const form = useRef();
 
   const sendEmail = (e: any) => {
@@ -28,28 +26,36 @@ function Contact() {
     setEmailError(email === "");
     setMessageError(message === "");
 
-    /* Uncomment below if you want to enable the emailJS */
-
     if (name !== "" && email !== "" && message !== "") {
-      const templateParams = {
+      const formData = {
         name: name,
         email: email,
         message: message,
+        // Enter your Web3Forms access key below
+        access_key: process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE" 
       };
 
-      console.log(templateParams);
-      emailjs
-        .send(serviceId, templateId, templateParams, {
-          publicKey: apiKey,
-        })
-        .then(
-          (response) => {
-            console.log("SUCCESS!", response.status, response.text);
-          },
-          (error) => {
-            console.log("FAILED...", error);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status === 200) {
+            console.log("SUCCESS!", json);
+            setIsSent(true);
+          } else {
+            console.log("FAILED...", json);
           }
-        );
+        })
+        .catch((error) => {
+          console.log("ERROR...", error);
+        });
+
       setName("");
       setEmail("");
       setMessage("");
@@ -140,6 +146,12 @@ function Contact() {
               Send
             </Button>
           </Box>
+          <Snackbar
+            open={isSent}
+            autoHideDuration={6000}
+            onClose={() => setIsSent(false)}
+            message="Message sent successfully!"
+          />
         </div>
       </div>
     </div>

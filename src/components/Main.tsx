@@ -10,7 +10,14 @@ import "../assets/styles/Main.scss";
 import MyImage from "../assets/images/me.jpeg";
 
 function Main() {
-  const [messages, setMessages] = React.useState([]); // Stores chat history
+  interface Message {
+    text: string;
+    sender: "user" | "ai";
+  }
+
+  const [messages, setMessages] = React.useState<Message[]>([
+    { text: "Hi there! I'm Yash's AI assistant. Ask me anything about his experience, skills, or projects!", sender: "ai" }
+  ]);
   const [input, setInput] = React.useState(""); // Stores user input
   const [loading, setLoading] = React.useState(false); // Stores user input
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -32,15 +39,20 @@ function Main() {
 
     setLoading(true);
     // Add the user's message to the chat history
-    const userMessage = { text: input, sender: "user" };
+    const userMessage: Message = { text: input, sender: "user" };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
     // Clear the input field
     setInput("");
 
     try {
+      const apiUrl =
+        process.env.NODE_ENV === "development"
+          ? "http://127.0.0.1:8000/predict/"
+          : "https://yg-portfolio-gemini.onrender.com/predict";
+
       const resp = await axios.post(
-        "https://yg-portfolio-gemini.onrender.com/predict",
+        apiUrl,
         {
           input_text: input,
         },
@@ -48,7 +60,7 @@ function Main() {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       // Add the AI's response to the chat history
@@ -95,7 +107,7 @@ function Main() {
               </a>
             </div>
             <h1>Yash Gupta</h1>
-            <p>Full Stack Engineer</p>
+            <p>Senior AI Engineer | Full-Stack Developer</p>
 
             <div className="mobile_social_icons">
               <a
@@ -136,6 +148,17 @@ function Main() {
           <div className={`chat-modal ${isModalOpen ? "open" : ""}`}>
             <div className="right-side">
               <div className="chat-container">
+                <div className="chat-header">
+                  <div className="avatar-title">
+                    <img src={MyImage} className="chat-avatar" alt="Avatar" />
+                    <div className="chat-title">
+                      <h4>Yash's AI Assistant</h4>
+                      <span className="online-status">
+                        <span className="dot"></span> Online
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 <div className="chat-messages" ref={messagesEndRef}>
                   {messages.map((message, index) => (
                     <div
