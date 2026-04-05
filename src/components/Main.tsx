@@ -4,6 +4,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
+import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import axios from "axios";
 import { css } from "@emotion/react";
 import "../assets/styles/Main.scss";
@@ -15,16 +16,78 @@ function Main() {
     sender: "user" | "ai";
   }
 
-  const [messages, setMessages] = React.useState<Message[]>([
-    { text: "Hi there! I'm Yash's AI assistant. Ask me anything about his experience, skills, or projects!", sender: "ai" }
-  ]);
+  const initialMessage: Message = { 
+    text: "Hi there! I'm Yash's AI assistant. Ask me anything about his experience, skills, or projects!", 
+    sender: "ai" 
+  };
+
+  const [messages, setMessages] = React.useState<Message[]>([initialMessage]);
   const [input, setInput] = React.useState(""); // Stores user input
   const [loading, setLoading] = React.useState(false); // Stores user input
+  const [sessionId, setSessionId] = React.useState<string>("");
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    // Generate or retrieve session ID
+    let id = localStorage.getItem("chat_session_id");
+    if (!id) {
+      id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      localStorage.setItem("chat_session_id", id);
+    }
+    setSessionId(id);
+
+    // Fetch history from backend
+    const fetchHistory = async (session_id: string) => {
+      try {
+        const baseUrl =
+          process.env.NODE_ENV === "development"
+            ? "http://127.0.0.1:8000"
+            : "https://yg-portfolio-gemini.onrender.com";
+        
+        const response = await axios.get(`${baseUrl}/history/${session_id}`);
+        if (response.data.history && response.data.history.length > 0) {
+          const historyMessages = response.data.history.map((msg: any) => ({
+            text: msg.content,
+            sender: msg.role === "user" ? "user" : "ai"
+          }));
+          
+          setMessages([
+            initialMessage,
+            ...historyMessages
+          ]);
+        }
+      } catch (error) {
+        console.error("Error fetching chat history:", error);
+      }
+    };
+
+    fetchHistory(id);
+  }, []);
+
+  React.useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
+  };
+
+  // Function to handle clearing history
+  const clearHistory = async () => {
+    if (!window.confirm("Are you sure you want to clear the conversation?")) return;
+
+    try {
+      const baseUrl =
+        process.env.NODE_ENV === "development"
+          ? "http://127.0.0.1:8000"
+          : "https://yg-portfolio-gemini.onrender.com";
+      
+      await axios.delete(`${baseUrl}/history/${sessionId}`);
+      setMessages([initialMessage]);
+    } catch (error) {
+      console.error("Error clearing history:", error);
     }
   };
 
@@ -50,6 +113,7 @@ function Main() {
         apiUrl,
         {
           input_text: input,
+          session_id: sessionId
         },
         {
           headers: {
@@ -64,7 +128,6 @@ function Main() {
         { text: resp.data.response, sender: "ai" },
       ]);
 
-      scrollToBottom();
       setLoading(false);
     } catch (error) {
       console.error("Error calling the API:", error);
@@ -135,6 +198,15 @@ function Main() {
                         <span className="dot"></span> Online
                       </span>
                     </div>
+                  </div>
+                  <div className="chat-actions">
+                    <button 
+                      className="clear-btn" 
+                      onClick={clearHistory}
+                      title="Clear conversation"
+                    >
+                      <DeleteSweepIcon />
+                    </button>
                   </div>
                 </div>
                 <div className="chat-messages" ref={messagesEndRef}>

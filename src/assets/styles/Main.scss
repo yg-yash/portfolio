@@ -99,6 +99,9 @@
   padding: 15px 20px;
   background: rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .avatar-title {
     display: flex;
@@ -121,6 +124,7 @@
         font-size: 16px;
         color: #fff;
         font-weight: 500;
+        text-align: left;
       }
 
       .online-status {
@@ -137,6 +141,30 @@
           border-radius: 50%;
           animation: pulse-green 2s infinite;
         }
+      }
+    }
+  }
+
+  .chat-actions {
+    .clear-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      border-radius: 8px;
+
+      &:hover {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+      }
+
+      svg {
+        font-size: 20px;
       }
     }
   }
