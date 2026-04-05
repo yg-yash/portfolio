@@ -20,17 +20,12 @@ function Main() {
   ]);
   const [input, setInput] = React.useState(""); // Stores user input
   const [loading, setLoading] = React.useState(false); // Stores user input
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const messagesEndRef = React.useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
     }
-  };
-
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
   };
 
   // Function to handle sending a message
@@ -128,24 +123,7 @@ function Main() {
           </div>
         </div>
         <div className="chat-wrapper">
-          {/* Toggle Button - Only visible on screens below 768px */}
-          <div className="chat-toggle-container">
-            {!isModalOpen && (
-              <div className="chat-toggle-tooltip">
-                Ask me anything about me!
-              </div>
-            )}
-            <button className="chat-toggle-btn" onClick={toggleModal}>
-              {isModalOpen ? (
-                <CloseIcon fontSize="large" />
-              ) : (
-                <AssistantIcon fontSize="large" />
-              )}
-            </button>
-          </div>
-
-          {/* Chat container that acts as modal on small screens */}
-          <div className={`chat-modal ${isModalOpen ? "open" : ""}`}>
+          <div className="chat-modal">
             <div className="right-side">
               <div className="chat-container">
                 <div className="chat-header">
