@@ -165,7 +165,7 @@ function Main() {
               </a>
             </div>
             <h1>Yash Gupta</h1>
-            <p>Senior AI Engineer | Full-Stack Developer</p>
+            <p>Senior Full Stack & Agentic AI Engineer</p>
 
             <div className="mobile_social_icons">
               <a

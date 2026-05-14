@@ -31,24 +31,22 @@ const expertise = [
       "Prompt Engineering",
       "Conversational AI",
       "Vector Databases",
-      "NLP",
       "AI Model Deployment",
     ],
     description:
-      "I specialize in building production-grade AI systems powered by Large Language Models (LLMs), focusing on real-world automation, agentic workflows, and scalable AI applications. My work includes designing RAG pipelines, multi-agent systems, and conversational AI solutions across web, WhatsApp, and voice platforms. I have hands-on experience with LangChain, LangGraph, and LlamaIndex, building intelligent systems for financial automation, marketplace workflows, and enterprise use cases.",
+      "Building production-grade AI systems, retrieval pipelines, and agentic workflows for real-world automation use cases. Experienced in designing conversational AI solutions, multi-agent orchestration, and AI-powered systems across fintech, marketplace, and enterprise workflows.",
     icon: <FontAwesomeIcon icon={faPython} size="3x" />,
   },
   {
-    name: "Backend Development & System Design",
+ name: "Backend Development & System Design",
     type: "",
     skills: [
       "Python",
       "FastAPI",
       "Node.js",
-      "Java",
-      "Django",
-      "NestJS",
       "Express.js",
+      "NestJS",
+      "Django",
       "REST APIs",
       "GraphQL",
       "Microservices",
@@ -57,15 +55,17 @@ const expertise = [
       "Socket.io",
     ],
     description:
-      "I design and build scalable backend systems and microservices architectures using Python and Node.js, with a strong focus on performance, reliability, and clean architecture. I have extensive experience developing LLM-powered APIs and high-performance backend services using FastAPI and modern frameworks, enabling seamless integration with enterprise systems and AI workflows.",
+      "Designing scalable backend systems, APIs, and microservices with a strong focus on performance, reliability, and clean architecture. Experienced in building production services that support workflow automation, integrations, and AI-powered application logic.",
     icon: <FontAwesomeIcon icon={faNodeJs} size="3x" />,
   },
   {
-    name: "Frontend Development",
+name: "Frontend Development",
     type: "",
     skills: [
       "React.js",
       "Next.js",
+      "React Native",
+      "Angular",
       "JavaScript",
       "TypeScript",
       "HTML",
@@ -74,12 +74,12 @@ const expertise = [
       "SCSS",
     ],
     description:
-      "I develop modern, responsive web applications using React.js and Next.js, focusing on performance, scalability, and seamless user experience. My work includes building AI-powered interfaces and dashboards that integrate complex backend systems and real-time data.",
+      "Developing responsive web and mobile interfaces using modern frontend frameworks with a strong focus on user experience, scalability, and maintainability. Experienced in building dashboards, workflow interfaces, and AI-integrated product experiences.",
     icon: <FontAwesomeIcon icon={faReact} size="3x" />,
   },
   {
-    name: "Cloud & DevOps",
-    type: "",
+        name: "Cloud & DevOps",
+     type: "",
     skills: [
       "AWS",
       "GCP",
@@ -94,11 +94,11 @@ const expertise = [
       "CloudFormation",
     ],
     description:
-      "I have strong experience building and deploying cloud-native applications using AWS and GCP, with a focus on scalability, reliability, and automation. I work extensively with containerization, orchestration, and serverless architectures to deliver production-ready systems.",
+      "Building and deploying cloud-native applications using AWS and GCP with a focus on scalability, automation, and production readiness. Experienced in containerization, serverless systems, deployment pipelines, and infrastructure configuration.",
     icon: <FontAwesomeIcon icon={faAws} size="3x" />,
   },
   {
-    name: "Databases & Search Systems",
+ name: "Databases & Search Systems",
     type: "",
     skills: [
       "MySQL",
@@ -106,22 +106,32 @@ const expertise = [
       "MongoDB",
       "Firebase Realtime Database",
       "Elasticsearch",
+      "DynamoDB",
+      "Supabase",
       "Vector Databases",
     ],
     description:
-      "I have worked extensively with relational, NoSQL, and search systems, enabling efficient data storage, retrieval, and real-time analytics. I also design vector-based retrieval systems for AI applications.",
+      "Working with relational, NoSQL, and search systems to support transactional platforms, data retrieval, and AI applications. Experienced in designing data models, optimizing queries, and building vector-based retrieval systems.",
+
     icon: <FontAwesomeIcon icon={faDatabase} size="3x" />,
   },
   {
-    name: "Mobile Development",
+   name: "Mobile Development",
     type: "",
-    skills: ["React Native", "Android (Java/Kotlin)"],
+    skills: [
+      "React Native",
+      "Android (Java/Kotlin)",
+      "Cross-Platform Development",
+      "Native App Development",
+      "Bluetooth Integration",
+      "IoT Application Development",
+      "Mobile UI/UX",
+    ],
     description:
-      "I have experience building cross-platform and native mobile applications, integrating backend systems and delivering smooth, scalable user experiences.",
-    icon: <FontAwesomeIcon icon={faAndroid} size="3x" />,
+      "Building mobile applications that integrate cleanly with backend systems and deliver smooth user experiences. Experienced in React Native and Android-based development for product, health-tech, and workflow-driven applications.",
   },
   {
-    name: "Architecture & Engineering Practices",
+ name: "Architecture & Engineering Practices",
     type: "",
     skills: [
       "System Design",
@@ -134,7 +144,7 @@ const expertise = [
       "SOLID Principles",
     ],
     description:
-      "I focus on building scalable, maintainable, and high-performance systems, applying modern software engineering principles and architectural patterns.",
+      "Applying scalable engineering principles and architectural patterns to build maintainable, high-performance systems. Focused on reliability, modularity, observability, and long-term system evolution across backend, cloud, and AI platforms.",
     icon: <FontAwesomeIcon icon={faDocker} size="3x" />,
   },
 ];

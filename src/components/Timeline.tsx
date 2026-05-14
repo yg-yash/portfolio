@@ -12,37 +12,25 @@ const timelineData = [
     date: "2025 - Present",
     title: "Sleek Pte Ltd, Singapore",
     subTitle: "Senior AI Engineer / Full-Stack Developer",
-    description: `Architecting and deploying end-to-end AI solutions for Sleek’s corporate, accounting, and fintech automation systems, improving process speed and accuracy across 15,000+ global clients.
-    Built scalable full-stack applications using React and Python (FastAPI) integrated with LLM-powered services.
-    Developed Python-based LLM services using LangChain and LlamaIndex to automate financial document processing.
-    Implemented RAG pipelines using embeddings and vector search for contextual financial document analysis.`,
+    description: `Architecting backend workflow automation and AI-powered document processing systems for corporate compliance and accounting operations using Node.js, Python, PostgreSQL, Supabase, AWS, and OCR/LLM-based extraction pipelines. Built scalable full-stack applications using React and Next.js, integrating APIs, workflow automation, and internal operational tooling across finance and compliance systems. Developed retrieval and orchestration workflows using LangChain, LangGraph, embeddings, and vector search to improve contextual document analysis and operational efficiency for 15,000+ global clients.`,
   },
   {
     date: "2022 - 2025",
     title: "CarXstream, Hyderabad",
     subTitle: "Co Founder & CTO",
-    description: `Co-founded CarXstream, an AI-driven marketplace for the pre-owned car industry, achieving 50K+ app downloads and 5 million platform hits.
-    Built WhatsApp, SMS, and voice AI automation workflows using LangChain, LangGraph, OpenAI, and Gemini.
-    Engineered an Elasticsearch-powered search feature that reduced response time by 20% and increased customer satisfaction by 25%.
-    Designed ML pipelines for dynamic pricing and fraud detection, and deployed scalable AWS microservices to handle traffic growth while achieving 99.9% uptime.`,
+    description: `Co-founded and scaled a cloud-native used-car marketplace platform across web, mobile, backend, search, and conversational systems. Led architecture and engineering for marketplace workflows involving inventory management, bidding, lead handling, dealer operations, payments, and customer engagement systems. Built event-driven backend services using AWS Lambda, API Gateway, SNS/SQS, DynamoDB Streams, Docker, and CI/CD workflows, while developing AI-assisted conversational and retrieval systems using Python, FastAPI, LangChain, LangGraph, Elasticsearch, and vector search technologies.`,
   },
   {
     date: "2021 - 2022",
     title: "Alumnus Software Ltd, Kolkata",
     subTitle: "Software Engineer",
-    description: `Developed an AI-powered native Android application leveraging Large Language Models (LLMs) to deliver intelligent user interactions and task automation.
-    Implemented advanced NLP capabilities to enhance responsiveness and streamline complex workflows.
-    Developed a Bluetooth-integrated native application for a smartwatch-based health monitoring system, leveraging IoT capabilities.
-    Contributed as a full-stack developer to build and optimize the GCP-based backend for enhanced app performance, scalability, and secure data transmission.`,
+    description: `Developed full-stack web and mobile applications across health-tech, enterprise dashboards, and video-streaming platforms using React Native, React, Angular, Node.js, and Python-based backend systems. Built smartwatch-integrated health monitoring applications with real-time visualization and native Android integrations, and contributed to conversational AI and retrieval-based systems for contextual troubleshooting workflows. Worked across frontend engineering, backend APIs, cloud integrations, and product delivery for enterprise and client-facing applications.`,
   },
   {
     date: "2020 - 2021",
     title: "DoTech Technologies, Noida",
     subTitle: "Software Engineer",
-    description: `Engineered a secure full-stack product for storing user credentials with robust encryption mechanisms.
-    Developed several applications, including ERP software, E-commerce apps, and Ed-tech platforms, ensuring seamless functionality and robust security.
-    Led the design and implementation of scalable backend systems, integrated payment gateways for e-commerce solutions.
-    Collaborated with cross-functional teams to deliver high-quality solutions, ensuring performance, scalability, and security in all projects.`,
+    description: `Built scalable full-stack applications and backend systems for startup and business clients using MERN stack technologies, React Native, and cloud-based deployment workflows. Worked on ERP-style platforms, e-commerce systems, internal business applications, and API integrations while contributing across frontend development, backend engineering, debugging, deployment support, and production issue resolution. Collaborated closely with cross-functional teams to deliver secure, maintainable, and performance-focused applications.`,
   },
 ];
 
